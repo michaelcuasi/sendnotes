@@ -30,6 +30,13 @@ console_command = 'php /var/www/html/artisan tinker'
   min_machines_running = 0
   processes = ['app']
 
+[processes]
+  app = ""
+  cron = "cron -f"
+  worker = "php artisan queue:listen"
+
+
+
 [deploy]
   release_command = "php /var/www/html/artisan migrate --force"
 
