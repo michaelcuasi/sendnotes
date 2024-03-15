@@ -27,14 +27,14 @@ class SendEmail implements ShouldQueue
      */
     public function handle(): void
     {
-        $noteUrl = config('app.url') . '/notes/' . $this->note->id;
+        // $noteUrl = config('app.url') . '/notes/' . $this->note->id;
 
-        $emailContent = "Hello, you've received a new note. View it here: {$noteUrl}";
+        // $emailContent = "Hello, you've received a new note. View it here: {$noteUrl}";
 
-        Mail::raw($emailContent, function ($message) {
-            $message->from('topedydy@pelagius.net', 'John ichae')
-                ->to($this->note->recipient)
-                ->subject('You have a new note from ' . $this->note->user->name);
-        });
+        // Mail::raw($emailContent, function ($message) {
+        //     $message->from('topedydy@pelagius.net', 'John ichae')
+        //         ->to($this->note->recipient)
+        //         ->subject('You have a new note from ' . $this->note->user->name);
+        // });
     }
 }
