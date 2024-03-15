@@ -1,10 +1,10 @@
-# fly.toml app configuration file generated for notesending on 2024-03-13T16:33:11+04:00
+# fly.toml app configuration file generated for notenoteapp on 2024-03-16T00:29:24+04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'notesending'
-primary_region = 'nrt'
+app = 'notenoteapp'
+primary_region = 'ams'
 console_command = 'php /var/www/html/artisan tinker'
 
 [build]
@@ -14,16 +14,11 @@ console_command = 'php /var/www/html/artisan tinker'
 
 [env]
   APP_ENV = 'production'
-  APP_URL = "https://notesending.fly.dev"
-  DB_CONNECTION = "pgsql"
   LOG_CHANNEL = 'stderr'
   LOG_LEVEL = 'info'
   LOG_STDERR_FORMATTER = 'Monolog\Formatter\JsonFormatter'
   SESSION_DRIVER = 'cookie'
   SESSION_SECURE_COOKIE = 'true'
-  MAIL_MAILER = "postmark"
-  MAIL_FROM_ADDRESS = "topedydy@pelagius.net"
-  MAIL_FROM_NAME = "Sendnotes"
 
 [http_service]
   internal_port = 8080
@@ -32,14 +27,6 @@ console_command = 'php /var/www/html/artisan tinker'
   auto_start_machines = true
   min_machines_running = 0
   processes = ['app']
-
-[processes]
-  app = ""
-  cron = "cron -f"
-  worker = "php artisan queue:listen"
-
-[deploy]
-  release_command = "php /var/www/html/artisan migrate --force"
 
 [[vm]]
   memory = '1gb'
