@@ -27,7 +27,6 @@ class NoteFactory extends Factory
             "recipient" => $this->faker->email,
             "is_published" => true,
             "heart_count" => $this->faker->numberBetween(0, 20),
-
         ];
     }
 }
