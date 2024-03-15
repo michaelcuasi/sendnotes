@@ -32,14 +32,14 @@ new class extends Component {
             </div>
         @else
             <x-button primary icon-right="plus" class="mt-2" href="{{route('notes.create')}}" wire:navigate>Create Note</x-button>
-            <div class="grid grid-cols-3 gap-4 border-solid border-2">
+            <div class="grid grid-cols-3 gap-4 border-2 border-solid">
                 @foreach ($notes as $note)
                     <x-card wire:key='{{$note->id}}' class="mt-6">
                         <div class="flex justify-between">
                             <div>
                                 
                                 @can('update', $note)
-                                    <a href="{{ route('notes.edit', $note) }}" wire:navigate
+                                    <a href="{{ route('notes.edit-note', $note) }}" wire:navigate
                                         class="text-xl font-bold hover:underline hover:text-blue-500">{{ $note->title }}</a>
                                 @else
                                     <p class="text-xl font-bold text-gray-500">{{ $note->title }}</p>
