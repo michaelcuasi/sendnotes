@@ -36,15 +36,17 @@ new class extends Component {
                 @foreach ($notes as $note)
                     <x-card wire:key='{{$note->id}}' class="mt-6">
                         <div class="flex justify-between">
-                            <div class="border-solid border-2">
-                                <a href="{{route('notes.edit-note', $note)}}" class="text-l font-bold hover:underline hover:text-blue-500" wire:navigate>
-                                {{$note->title}}
-                                </a>
-                                <p class="text-xs mt-2">
-                                    {{Str::limit($note->body, 100)}}
-                                </p>
+                            <div>
+                                
+                                @can('update', $note)
+                                    <a href="{{ route('notes.edit', $note) }}" wire:navigate
+                                        class="text-xl font-bold hover:underline hover:text-blue-500">{{ $note->title }}</a>
+                                @else
+                                    <p class="text-xl font-bold text-gray-500">{{ $note->title }}</p>
+                                @endcan
+                                <p class="mt-2 text-xs">{{ Str::limit($note->body, 50) }}</p>
                             </div>
-                            <div class="text-xs text-black border-solid border-2">
+                            <div class="text-xs text-black ">
                                 {{\Carbon\Carbon::parse($note->send_date)->format('M-d-Y')}}
                             </div>
                         </div>
@@ -56,7 +58,7 @@ new class extends Component {
                                 </span>
                             </p>
                         <div>
-                            <x-button.circle icon="eye"></x-button>
+                            <x-button.circle href="{{route('notes.view', $note)}}" icon="eye"></x-button>
                             <x-button.circle wire:click="delete('{{$note->id}}')" icon="trash"></x-button>
                         </div>
                         </div>
