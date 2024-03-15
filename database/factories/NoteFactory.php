@@ -25,7 +25,7 @@ class NoteFactory extends Factory
             "body" => $this->faker->paragraph,
             "send_date" => $this->faker->date('Y-m-d', '+30 days'),
             "recipient" => $this->faker->email,
-            "is_Published" => true,
+            "is_published" => true,
             "heart_count" => $this->faker->numberBetween(0, 20),
 
         ];

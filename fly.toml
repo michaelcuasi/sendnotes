@@ -38,8 +38,6 @@ console_command = 'php /var/www/html/artisan tinker'
   cron = "cron -f"
   worker = "php artisan queue:listen"
 
-
-
 [deploy]
   release_command = "php /var/www/html/artisan migrate --force"
 

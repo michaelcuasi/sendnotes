@@ -2,13 +2,13 @@
 
 namespace App\Jobs;
 
+use App\Models\Note;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
-use App\Models\Note;
 
 class SendEmail implements ShouldQueue
 {
@@ -19,7 +19,7 @@ class SendEmail implements ShouldQueue
      */
     public function __construct(public Note $note)
     {
-
+        //
     }
 
     /**
@@ -32,7 +32,7 @@ class SendEmail implements ShouldQueue
         $emailContent = "Hello, you've received a new note. View it here: {$noteUrl}";
 
         Mail::raw($emailContent, function ($message) {
-            $message->from('topedydy@pelagius.net', 'Note Sending App')
+            $message->from('topedydy@pelagius.net', 'John ichae')
                 ->to($this->note->recipient)
                 ->subject('You have a new note from ' . $this->note->user->name);
         });
