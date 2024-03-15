@@ -23,7 +23,7 @@ console_command = 'php /var/www/html/artisan tinker'
   SESSION_SECURE_COOKIE = 'true'
   MAIL_MAILER = "postmark"
   MAIL_FROM_ADDRESS = "topedydy@pelagius.net"
-  MAIL_FROM_NAME = "Notesend"
+  MAIL_FROM_NAME = "Sendnotes"
 
 [http_service]
   internal_port = 8080
